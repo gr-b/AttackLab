@@ -1,0 +1,44 @@
+0x401afb: ret
+0x401b0d: nop; ret
+0x401b16: pop ax; ret
+0x401b17: pop rax; ret
+0x401b0c: nop; nop; ret
+0x401b10: mov rdi,rax; ret
+0x401af7: add rsp,0x8; ret
+0x401afc: mov eax,0x1; ret
+0x401b11: mov edi,eax; ret
+0x401af8: add esp,0x8; ret
+0x401aff: add [rax],al; ret
+0x401b1e: xchg edx,eax; ret
+0x401b0b: pop rax; nop; nop; ret
+0x401b2b: rex.WX mov rdi,rax; ret
+0x401b0f: mov eax,0xc3c78948; ret
+0x401b09: mov eax,0x9090580f; ret
+0x401b29: mov eax,0xc7894a64; ret
+0x401b15: mov eax,0x15c35866; ret
+0x401b12: mov ebx,0x5866b8c3; ret
+0x401b1b: mov [rdi],0x32c39258; ret
+0x401b22: mov [rdi],0xc3909018; ret
+0x401afa: or bl,al; mov eax,0x1; ret
+0x401b1d: pop rax; xchg edx,eax; ret
+0x401b2a: fs; rex.WX mov rdi,rax; ret
+0x401b02: lea eax,[rdi-0x3c3836b8]; ret
+0x401b2f: lea eax,[rdi-0x3c3876b8]; ret
+0x401afd: add [rax],eax; add [rax],al; ret
+0x401b06: mov ebx,0x580fb8c3; nop; nop; ret
+0x401b20: xor al,bl; mov [rdi],0xc3909018; ret
+0x401b19: adc eax,0x5807c7c3; xchg edx,eax; ret
+0x401b00: add bl,al; lea eax,[rdi-0x3c3836b8]; ret
+0x401b05: leave; mov ebx,0x580fb8c3; nop; nop; ret
+0x401b04: rex.W leave; mov ebx,0x580fb8c3; nop; nop; ret
+0x401af2: call 0x400e20 <__printf_chk@plt>; add rsp,0x8; ret
+0x401b24: sbb [rax-0x473c3c70],dl; fs; rex.WX mov rdi,rax; ret
+0x401b0a: addps xmm2,XMMWORD [rax+0x48b8c390]; mov edi,eax; ret
+0x401afe: add [rax],al; add bl,al; lea eax,[rdi-0x3c3836b8]; ret
+0x401b03: xchg [rax-0x37],ecx; mov ebx,0x580fb8c3; nop; nop; ret
+0x401aed: mov eax,0x0; call 0x400e20 <__printf_chk@plt>; add rsp,0x8; ret
+0x401af0: add [rax],al; call 0x400e20 <__printf_chk@plt>; add rsp,0x8; ret
+0x401aec: add [rax+0x0],bh; call 0x400e20 <__printf_chk@plt>; add rsp,0x8; ret
+0x401aeb: add [rax],al; mov eax,0x0; call 0x400e20 <__printf_chk@plt>; add rsp,0x8; ret
+0x401aee: add [rax],al; add [rax],al; call 0x400e20 <__printf_chk@plt>; add rsp,0x8; ret
+0x401aea: add [rax],al; add [rax+0x0],bh; call 0x400e20 <__printf_chk@plt>; add rsp,0x8; ret
